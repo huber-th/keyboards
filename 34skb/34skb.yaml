@@ -1,0 +1,386 @@
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          rows:
+            bottom:
+              bind: [0,0,0,1]
+            home:
+              bind: [0,0,0,1]
+            top:
+              bind: [0,0,0,1]
+        ring:
+          spread: cx
+          stagger: 0.66U
+          rows:
+            bottom:
+              bind: [0,1,14,1]
+            home:
+              bind: [0,1,0,1]
+            top:
+              bind: [0,1,0,1]
+        middle:
+          spread: cx
+          stagger: 0.25U
+          rows:
+            bottom:
+              bind: [0,0,20,0]
+            home:
+              bind: [0,0,0,0]
+            top:
+              bind: [0,1,0,1]
+        index:
+          spread: cx
+          stagger: -0.25U
+          rows:
+            bottom:
+              bind: [0,1,20,1]
+            home:
+              bind: [0,1,0,1]
+            top:
+              bind: [0,1,0,1]
+        inner:
+          spread: cx
+          stagger: -0.15U
+          rows:
+            bottom:
+              bind: [0,20,0,0]
+            home:
+              bind: [0,20,0,0]
+            top:
+              bind: [0,1,0,0]
+      rows:
+        bottom:
+        home:
+        top:
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0.66U, -1.25U]
+        rotate: -10
+      columns:
+        left:
+          key.name: thumb_left
+          rows:
+            single:
+              bind: [8,9,0,0]
+        right:
+          spread: U
+          rotate: -15
+          origin: [-0.5U, -0.5U]
+          key.name: thumb_right
+          rows:
+            single:
+              bind: [15,1,0,0]
+  key:
+    padding: cy
+    footprints:
+      - type: choc
+        nets:
+          from: GND
+          to: =name
+        params:
+          hotswap: true
+          reverse: true
+          keycaps: true
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [1cx - 0.5, 1cx - 0.5]
+    cutout:
+      - type: outline
+        name: raw
+        fillet: 1
+    keycap_outline:
+      - type: keys
+        side: left
+        size: [1cx -0.5, 1cy - 0.5]
+        bound: false
+pcbs:
+  34skb:
+    outlines:
+      board:
+        outline: cutout
+      keycaps:
+        outline: keycap_outline
+        layer: Eco1.User
+    footprints:
+      mcu:
+        type: promicro_pretty
+        anchor:
+          - ref: matrix_inner_home
+            shift: [1U, -0.5U]
+            rotate: -90
+        nets:
+          P1: matrix_inner_top
+          P2: matrix_index_top
+          P3: matrix_middle_top
+          P4: matrix_ring_top
+          P5: matrix_pinky_top
+          P6: matrix_inner_bottom
+          P7: matrix_index_bottom
+          P8: matrix_middle_bottom
+          P9: thumb_left
+          P10: thumb_right
+          P14: matrix_ring_bottom
+          P15: matrix_pinky_home
+          P16: matrix_pinky_bottom
+          P18: matrix_ring_home
+          P19: matrix_middle_home
+          P20: matrix_index_home
+          P21: matrix_inner_home
+      trrs:
+        type: trrs
+        anchor:
+          - ref: matrix_inner_bottom
+            shift: [1.4U, -0.8U]
+            rotate: -90
+        nets:
+          A: GND
+          B: GND
+          C: P0
+          D: VCC
+        params:
+          reverse: true
+          symmetric: true
+      via_pinky_bottom:
+        type: via
+        nets:
+          net: matrix_pinky_bottom
+        anchor:
+          - ref: matrix_pinky_bottom
+            shift: [0U, -0.15U]
+      via_pinky_home:
+        type: via
+        nets:
+          net: matrix_pinky_home
+        anchor:
+          - ref: matrix_pinky_home
+            shift: [0U, -0.15U]
+      via_pinky_top:
+        type: via
+        nets:
+          net: matrix_pinky_top
+        anchor:
+          - ref: matrix_pinky_top
+            shift: [0U, -0.15U]
+      via_ring_bottom:
+        type: via
+        nets:
+          net: matrix_ring_bottom
+        anchor:
+          - ref: matrix_ring_bottom
+            shift: [0U, -0.15U]
+      via_ring_home:
+        type: via
+        nets:
+          net: matrix_ring_home
+        anchor:
+          - ref: matrix_ring_home
+            shift: [0U, -0.15U]
+      via_ring_top:
+        type: via
+        nets:
+          net: matrix_ring_top
+        anchor:
+          - ref: matrix_ring_top
+            shift: [0U, -0.15U]
+      via_middle_bottom:
+        type: via
+        nets:
+          net: matrix_middle_bottom
+        anchor:
+          - ref: matrix_middle_bottom
+            shift: [0U, -0.15U]
+      via_middle_home:
+        type: via
+        nets:
+          net: matrix_middle_home
+        anchor:
+          - ref: matrix_middle_home
+            shift: [0U, -0.15U]
+      via_middle_top:
+        type: via
+        nets:
+          net: matrix_middle_top
+        anchor:
+          - ref: matrix_middle_top
+            shift: [0U, -0.15U]
+      via_index_bottom:
+        type: via
+        nets:
+          net: matrix_index_bottom
+        anchor:
+          - ref: matrix_index_bottom
+            shift: [0U, -0.15U]
+      via_index_home:
+        type: via
+        nets:
+          net: matrix_index_home
+        anchor:
+          - ref: matrix_index_home
+            shift: [0U, -0.15U]
+      via_index_top:
+        type: via
+        nets:
+          net: matrix_index_top
+        anchor:
+          - ref: matrix_index_top
+            shift: [0U, -0.15U]
+      via_inner_bottom:
+        type: via
+        nets:
+          net: matrix_inner_bottom
+        anchor:
+          - ref: matrix_inner_bottom
+            shift: [0U, -0.15U]
+      via_inner_home:
+        type: via
+        nets:
+          net: matrix_inner_home
+        anchor:
+          - ref: matrix_inner_home
+            shift: [0U, -0.15U]
+      via_inner_top:
+        type: via
+        nets:
+          net: matrix_inner_top
+        anchor:
+          - ref: matrix_inner_top
+            shift: [0U, -0.15U]
+      via_thumb_right:
+        type: via
+        nets:
+          net: thumb_right
+        anchor:
+          - ref: thumb_right
+            shift: [0U, -0.15U]
+      via_thumb_left:
+        type: via
+        nets:
+          net: thumb_left
+        anchor:
+          - ref: thumb_left
+            shift: [0U, -0.15U]
+      via_gnd_pinky_bottom:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_pinky_bottom
+            shift: [0U, 0.15U]
+      via_gnd_pinky_home:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_pinky_home
+            shift: [0U, 0.15U]
+      via_gnd_pinky_top:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_pinky_top
+            shift: [0U, 0.15U]
+      via_gnd_ring_bottom:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_ring_bottom
+            shift: [0U, 0.15U]
+      via_gnd_ring_home:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_ring_home
+            shift: [0U, 0.15U]
+      via_gnd_ring_top:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_ring_top
+            shift: [0U, 0.15U]
+      via_gnd_middle_bottom:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_middle_bottom
+            shift: [0U, 0.15U]
+      via_gnd_middle_home:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_middle_home
+            shift: [0U, 0.15U]
+      via_gnd_middle_top:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_middle_top
+            shift: [0U, 0.15U]
+      via_gnd_index_bottom:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_index_bottom
+            shift: [0U, 0.15U]
+      via_gnd_index_home:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_index_home
+            shift: [0U, 0.15U]
+      via_gnd_index_top:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_index_top
+            shift: [0U, 0.15U]
+      via_gnd_inner_bottom:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_inner_bottom
+            shift: [0U, 0.15U]
+      via_gnd_inner_home:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_inner_home
+            shift: [0U, 0.15U]
+      via_gnd_inner_top:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: matrix_inner_top
+            shift: [0U, 0.15U]
+      via_gnd_thumb_right:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: thumb_right
+            shift: [0U, 0.15U]
+      via_gnd_thumb_left:
+        type: via
+        nets:
+          net: GND
+        anchor:
+          - ref: thumb_left
+            shift: [0U, 0.15U]
